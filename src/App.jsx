@@ -1,9 +1,21 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+
 function App() {
   return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<div>Contact</div>} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+// __________________COMMENTS_______________
+
+// {/* <Route path="/contact" element={<div>Contact</div>} /> but dont use like this  */}
