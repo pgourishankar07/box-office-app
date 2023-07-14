@@ -4,8 +4,9 @@ import Navs from './Navs';
 function MainLayout() {
   return (
     <>
+      <h1>Box Office</h1>
+      <div>Are you looking for a movie or an actor ?</div>
       <Navs />
-      <h1>This is a Home page</h1>
       <Outlet />
     </>
   );

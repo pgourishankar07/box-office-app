@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const LINKS = [
   { text: 'Home', to: '/' },
-  { text: 'Contact', to: '/contact' },
+  { text: 'Starred', to: '/starred' },
 ];
 
 function Navs() {
