@@ -1,7 +1,7 @@
 const BASE_URL = 'https://api.tvmaze.com';
 
-export function searchShows(query) {
-  return apiGetData(`/search/shows?q=${query}`);
+export function searchShows(query, srchOpt) {
+  return apiGetData(`/search/${srchOpt}?q=${query}`);
 }
 
 async function apiGetData(queryString) {
