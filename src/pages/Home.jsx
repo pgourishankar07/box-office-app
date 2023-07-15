@@ -1,22 +1,12 @@
 import { useState } from 'react';
 import { searchShows } from './../api/tvmazeData';
+import SearchForm from '../components/SearchForm';
 
 function Home() {
-  const [val, setVal] = useState('');
   const [apiData, setapiData] = useState(null);
   const [apiErr, setApiErr] = useState(null);
-  const [srchOpt, setSrchOpt] = useState('shows');
 
-  function changeVal(event) {
-    setVal(event.target.value);
-  }
-
-  function changeOpt(event) {
-    setSrchOpt(event.target.value);
-  }
-
-  async function Search(event) {
-    event.preventDefault();
+  async function Search(val, srchOpt) {
     try {
       setApiErr(null);
       const result = await searchShows(val, srchOpt);
@@ -45,36 +35,10 @@ function Home() {
   }
   // ____________________________________________________________________
   return (
-    <div>
-      <form onSubmit={Search}>
-        <input type="text" onChange={changeVal} value={val}></input>
-
-        <label>
-          Shows
-          <input
-            type="radio"
-            name="search-options"
-            value="shows"
-            checked={srchOpt === 'shows'}
-            onChange={changeOpt}
-          />
-        </label>
-
-        <label>
-          Actors
-          <input
-            type="radio"
-            name="search-options"
-            value="people"
-            checked={srchOpt === 'people'}
-            onChange={changeOpt}
-          />
-        </label>
-
-        <button type="submit">Search</button>
-      </form>
+    <>
+      <SearchForm SearchData={Search} />
       <div>{renderData()}</div>
-    </div>
+    </>
   );
 }
 
