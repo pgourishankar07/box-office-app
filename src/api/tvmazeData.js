@@ -11,5 +11,5 @@ export function searchShowsActors(query, srchOpt) {
 }
 
 export function searchShowById(showId) {
-  return apiGetData(`/shows/${showId}`);
+  return apiGetData(`/shows/${showId}?embed[]=seasons&embed[]=cast`);
 }
