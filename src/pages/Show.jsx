@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { searchShowById } from '../api/tvmazeData';
 
-function Show() {
-  const { showId } = useParams();
-
+//CUSTOM HOOK
+function useShowById(showId) {
   const [apiData, setapiData] = useState(null);
   const [apiErr, setApiErr] = useState(null);
 
@@ -20,6 +19,14 @@ function Show() {
     }
     fetchData();
   }, [showId]);
+
+  return { apiData, apiErr };
+}
+
+function Show() {
+  const { showId } = useParams();
+
+  const { apiData, apiErr } = useShowById(showId);
 
   if (apiErr) {
     return <>An Error occured: {apiErr.message}</>;
