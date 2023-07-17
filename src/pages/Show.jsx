@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { searchShowById } from '../api/tvmazeData';
 import ShowLayout from '../components/shows/ShowLayout';
@@ -22,6 +22,9 @@ function Show() {
   if (apiData) {
     return (
       <>
+        <div>
+          <Link to="/">Back</Link>
+        </div>
         <ShowLayout
           image={apiData.image}
           name={apiData.name}
