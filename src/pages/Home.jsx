@@ -1,21 +1,24 @@
 import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { searchShowsActors } from './../api/tvmazeData';
 import SearchForm from '../components/SearchForm';
 import ShowsGrid from '../components/shows/ShowsGrid';
 import ActorsGrid from '../components/actors/ActorsGrid';
 
 function Home() {
-  const [apiData, setapiData] = useState(null);
-  const [apiErr, setApiErr] = useState(null);
+  const [filter, setFilter] = useState(null);
+
+  const { data: apiData, error: apiErr } = useQuery({
+    queryKey: ['search', filter],
+    queryFn: () => {
+      return searchShowsActors(filter.val, filter.srchOpt);
+    },
+    enabled: !!filter,
+    refetchOnWindowFocus: false, //so that everyTime u focus on windows it will not fetch data
+  });
 
   async function Search(val, srchOpt) {
-    try {
-      setApiErr(null);
-      const result = await searchShowsActors(val, srchOpt);
-      setapiData(result);
-    } catch (error) {
-      setApiErr(error);
-    }
+    setFilter({ val, srchOpt });
   }
 
   function renderData() {
@@ -24,7 +27,6 @@ function Home() {
     }
 
     if (apiData?.length === 0) {
-      //optional chaining---if apiData is not null([]) then check whether the length =0
       return <>No Data Found</>;
     }
 
