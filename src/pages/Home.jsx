@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { searchShows } from './../api/tvmazeData';
+import { searchShowsActors } from './../api/tvmazeData';
 import SearchForm from '../components/SearchForm';
 import ShowsGrid from '../components/shows/ShowsGrid';
 import ActorsGrid from '../components/actors/ActorsGrid';
@@ -11,7 +11,7 @@ function Home() {
   async function Search(val, srchOpt) {
     try {
       setApiErr(null);
-      const result = await searchShows(val, srchOpt);
+      const result = await searchShowsActors(val, srchOpt);
       setapiData(result);
     } catch (error) {
       setApiErr(error);

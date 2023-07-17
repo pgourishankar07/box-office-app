@@ -1,32 +1,20 @@
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import { searchShowById } from '../api/tvmazeData';
-
-//CUSTOM HOOK
-function useShowById(showId) {
-  const [apiData, setapiData] = useState(null);
-  const [apiErr, setApiErr] = useState(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const data = await searchShowById(showId);
-        console.log(data);
-        setapiData(data);
-      } catch (error) {
-        setApiErr(error);
-      }
-    }
-    fetchData();
-  }, [showId]);
-
-  return { apiData, apiErr };
-}
 
 function Show() {
   const { showId } = useParams();
 
-  const { apiData, apiErr } = useShowById(showId);
+  const { data: apiData, error: apiErr } = useQuery({
+    queryKey: ['show', showId],
+    queryFn: () => {
+      return searchShowById(showId);
+    },
+  });
+  //react-query npm package for fetching data instead of usinf useEffect which will fetch twice due to strictmode.
+  // useQuery --- is a custom hook created by tansact reat query lib to fetch data.
+  //querKey --- is like dependency variable if that changes reRender takes place.
+  //querFn --- is changes to happen whenever dependency changes.
 
   if (apiErr) {
     return <>An Error occured: {apiErr.message}</>;

@@ -6,7 +6,7 @@ async function apiGetData(queryString) {
   return body;
 }
 
-export function searchShows(query, srchOpt) {
+export function searchShowsActors(query, srchOpt) {
   return apiGetData(`/search/${srchOpt}?q=${query}`);
 }
 
