@@ -13,3 +13,8 @@ export function searchShowsActors(query, srchOpt) {
 export function searchShowById(showId) {
   return apiGetData(`/shows/${showId}?embed[]=seasons&embed[]=cast`);
 }
+
+export async function searchShowsByIds(showIds) {
+  const promises = showIds.map(showId => apiGetData(`/shows/${showId}`));
+  return await Promise.all(promises);
+}
