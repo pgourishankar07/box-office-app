@@ -4,6 +4,39 @@ import { searchShowsActors } from './../api/tvmazeData';
 import SearchForm from '../components/SearchForm';
 import ShowsGrid from '../components/shows/ShowsGrid';
 import ActorsGrid from '../components/actors/ActorsGrid';
+import styled, { css } from 'styled-components';
+// _______________
+
+const AnyTagName = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+
+  ${props =>
+    props.primary &&
+    css`
+      background: palevioletred;
+      color: white;
+    `}
+
+  /* ${props =>
+    props.fontSize &&
+    css`
+      font-size: ${props.fontSize}px;
+      background: palevioletred;
+      color: white;
+    `} */
+
+    ${props =>
+    props.$fontSize &&
+    css`
+      font-size: ${props.$fontSize}px;
+      background: palevioletred;
+      color: white;
+    `}
+`;
+// _______________
 
 function Home() {
   const [filter, setFilter] = useState(null);
@@ -42,6 +75,14 @@ function Home() {
   // ____________________________________________________________________
   return (
     <>
+      <AnyTagName>Hi</AnyTagName>
+      <AnyTagName primary>Hi</AnyTagName>
+      {/* <AnyTagName primary fontSize={30}>
+        Hi
+      </AnyTagName> */}
+      <AnyTagName primary $fontSize={30}>
+        Hi
+      </AnyTagName>
       <SearchForm SearchData={Search} />
 
       <div>{renderData()}</div>
