@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import CustBtns from './CustBtns';
+import { useSearchStr } from '../lib/useSearchStr';
 
 function SearchForm({ SearchData }) {
-  const [val, setVal] = useState('');
+  const [val, setVal] = useSearchStr();
   const [srchOpt, setSrchOpt] = useState('shows');
 
   function changeVal(event) {
