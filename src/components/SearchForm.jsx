@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import CustBtns from './CustBtns';
 
 function SearchForm({ SearchData }) {
   const [val, setVal] = useState('');
@@ -22,27 +23,21 @@ function SearchForm({ SearchData }) {
       <form onSubmit={Search}>
         <input type="text" onChange={changeVal} value={val}></input>
 
-        <label>
-          Shows
-          <input
-            type="radio"
-            name="search-options"
-            value="shows"
-            checked={srchOpt === 'shows'}
-            onChange={changeOpt}
-          />
-        </label>
+        <CustBtns
+          label="Shows"
+          name="search-options"
+          value="shows"
+          checked={srchOpt === 'shows'}
+          onChange={changeOpt}
+        />
 
-        <label>
-          Actors
-          <input
-            type="radio"
-            name="search-options"
-            value="people"
-            checked={srchOpt === 'people'}
-            onChange={changeOpt}
-          />
-        </label>
+        <CustBtns
+          label="Actors"
+          name="search-options"
+          value="people"
+          checked={srchOpt === 'people'}
+          onChange={changeOpt}
+        />
 
         <button type="submit">Search</button>
       </form>
