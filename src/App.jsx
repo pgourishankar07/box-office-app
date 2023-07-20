@@ -31,7 +31,3 @@ function App() {
 }
 
 export default App;
-
-// __________________COMMENTS_______________
-
-// {/* <Route path="/starred" element={<div>Contact</div>} /> but dont use like this  */}

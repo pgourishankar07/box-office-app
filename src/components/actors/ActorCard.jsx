@@ -1,11 +1,11 @@
-// import { Link } from 'react-router-dom';
+import { SearchCard, SearchImgWrapper } from '../common/SearchCard';
 
 function ActorCard({ name, img, gender, country, birthday, death }) {
   return (
-    <>
-      <div>
+    <SearchCard>
+      <SearchImgWrapper>
         <img src={img} />
-      </div>
+      </SearchImgWrapper>
 
       <h1>
         {name} {gender ? `(${gender}) ` : '(Unknown)'}
@@ -13,7 +13,7 @@ function ActorCard({ name, img, gender, country, birthday, death }) {
       <p>{country ? `Comes from ${country} ` : 'Unknown Country'}</p>
       <p>{birthday ? `Born on ${birthday} ` : 'Birthday Not Available'}</p>
       <p>{death ? `Died on  ${death} ` : 'Alive'}</p>
-    </>
+    </SearchCard>
   );
 }
 

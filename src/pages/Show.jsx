@@ -1,11 +1,12 @@
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import styled from 'styled-components';
 import { searchShowById } from '../api/tvmazeData';
 import ShowLayout from '../components/shows/ShowLayout';
 import Details from '../components/shows/Details';
 import Seasons from '../components/shows/Seasons';
 import Cast from '../components/shows/Cast';
-
+import { TextCenter } from '../components/common/TextCenter';
 function Show() {
   const { showId } = useParams();
 
@@ -17,14 +18,15 @@ function Show() {
   });
 
   if (apiErr) {
-    return <>An Error occured: {apiErr.message}</>;
+    return <TextCenter>An Error occured: {apiErr.message}</TextCenter>;
   }
   if (apiData) {
     return (
-      <>
-        <div>
+      <ShowPageWrapper>
+        <BackHomeWrapper>
           <Link to="/">Back</Link>
-        </div>
+        </BackHomeWrapper>
+
         <ShowLayout
           image={apiData.image}
           name={apiData.name}
@@ -33,29 +35,61 @@ function Show() {
           summary={apiData.summary}
         />
 
-        <div>
+        <InfoBlock>
           <h2>Details</h2>
           <Details
             status={apiData.status}
             premiered={apiData.premiered}
             network={apiData.network}
           />
-        </div>
+        </InfoBlock>
 
-        <div>
+        <InfoBlock>
           <h2>Seasons</h2>
           <Seasons seasons={apiData._embedded.seasons} />
-        </div>
+        </InfoBlock>
 
-        <div>
+        <InfoBlock>
           <h2>Cast</h2>
           <Cast cast={apiData._embedded.cast} />
-        </div>
-      </>
+        </InfoBlock>
+      </ShowPageWrapper>
     );
   }
 
-  return <>Loading...</>;
+  return <TextCenter>Loading...</TextCenter>;
 }
 
 export default Show;
+
+const BackHomeWrapper = styled.div`
+  margin-bottom: 30px;
+  text-align: left;
+  a {
+    padding: 10px;
+    color: ${({ theme }) => theme.mainColors.dark};
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
+const ShowPageWrapper = styled.div`
+  margin: auto;
+  @media only screen and (min-width: 768px) {
+    max-width: 700px;
+  }
+  @media only screen and (min-width: 992px) {
+    max-width: 900px;
+  }
+`;
+
+const InfoBlock = styled.div`
+  margin-bottom: 40px;
+  h2 {
+    margin: 0;
+    margin-bottom: 30px;
+    font-size: 22px;
+  }
+`;

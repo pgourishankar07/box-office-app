@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styled from 'styled-components';
 import CustBtns from './CustBtns';
 import { useSearchStr } from '../lib/useSearchStr';
 
@@ -20,10 +21,15 @@ function SearchForm({ SearchData }) {
   }
 
   return (
-    <div>
-      <form onSubmit={Search}>
-        <input type="text" onChange={changeVal} value={val}></input>
+    <form onSubmit={Search}>
+      <SearchInput
+        type="text"
+        placeholder="Search for Movies, Shows, ... "
+        onChange={changeVal}
+        value={val}
+      ></SearchInput>
 
+      <RadiosWrapper>
         <CustBtns
           label="Shows"
           name="search-options"
@@ -31,7 +37,6 @@ function SearchForm({ SearchData }) {
           checked={srchOpt === 'shows'}
           onChange={changeOpt}
         />
-
         <CustBtns
           label="Actors"
           name="search-options"
@@ -39,11 +44,58 @@ function SearchForm({ SearchData }) {
           checked={srchOpt === 'people'}
           onChange={changeOpt}
         />
+      </RadiosWrapper>
 
+      <SearchButtonWrapper>
         <button type="submit">Search</button>
-      </form>
-    </div>
+      </SearchButtonWrapper>
+    </form>
   );
 }
 
 export default SearchForm;
+
+const SearchInput = styled.input`
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  width: 200px;
+  margin: auto;
+  outline: none;
+  padding: 13px 15px;
+  border: 1px solid #dbdbdb;
+  box-shadow: 0px 0px 10px 0px rgba(219, 219, 219, 0.5);
+  font-size: 14px;
+  border-radius: 12px;
+  color: #8d8d8d;
+  &::placeholder {
+    font-weight: 300;
+    color: #8d8d8d;
+  }
+`;
+
+export const RadiosWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  label {
+    margin: 0 15px;
+  }
+`;
+
+const SearchButtonWrapper = styled.div`
+  text-align: center;
+  margin-bottom: 35px;
+  button {
+    color: #fff;
+    background-color: ${({ theme }) => theme.mainColors.blue};
+    margin: auto;
+    padding: 10px 50px;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;

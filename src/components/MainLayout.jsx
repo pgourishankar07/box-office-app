@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router-dom';
 import Navs from './Navs';
+import AppTitle from './AppTitle';
 
 function MainLayout() {
   return (
     <>
-      <h1>Box Office</h1>
-      <div>Are you looking for a movie or an actor ?</div>
+      <AppTitle />
       <Navs />
       <Outlet />
     </>
