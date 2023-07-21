@@ -40,7 +40,7 @@ const SeasonList = styled.div`
     }
     .left {
       flex: 0 0 30%;
-      border-right: 1px solid #b0b0b0;
+      border-right: 1px solid red;
       padding-right: 20px;
     }
     .right {

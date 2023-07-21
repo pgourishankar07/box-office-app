@@ -3,9 +3,9 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components';
 const theme = {
   fontFamily: 'Roboto, sans-serif',
   mainColors: {
-    blue: '#2400ff',
+    blue: 'rgb(229,9,20);',
     gray: '#c6c6c6',
-    dark: '#353535',
+    dark: 'rgb(229,9,20);',
   },
 };
 
@@ -28,3 +28,5 @@ export function GlobalTheme({ children }) {
     </ThemeProvider>
   );
 }
+
+// grey #c6c6c6

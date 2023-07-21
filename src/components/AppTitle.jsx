@@ -3,7 +3,7 @@ import styled from 'styled-components';
 function AppTitle(props) {
   const {
     title = 'Box Office',
-    subtitle = 'Are you looking for a Movie or Actor ?',
+    subtitle = 'Look for Popular Movies, TV Shows, Actors, ...',
   } = props;
   return (
     <TitleWrapper>
@@ -25,7 +25,7 @@ const TitleWrapper = styled.div`
     margin: 0 0 10px;
   }
   p {
-    color: ${({ theme }) => theme.mainColors.dark};
+    color: #dadbdd;
     margin: 0;
   }
 `;

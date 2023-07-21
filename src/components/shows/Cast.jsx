@@ -13,7 +13,7 @@ function Cast({ cast }) {
             />
           </div>
           <div className="actor">
-            {i.person.name} | {i.character.name}
+            <b>{i.person.name}</b> <span>|</span> {i.character.name}
           </div>
         </div>
       ))}
@@ -49,5 +49,10 @@ const CastList = styled.div`
   }
   .actor {
     margin-left: 25px;
+    p {
+    }
+  }
+  span {
+    color: red;
   }
 `;

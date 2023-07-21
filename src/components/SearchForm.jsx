@@ -86,16 +86,17 @@ const SearchButtonWrapper = styled.div`
   text-align: center;
   margin-bottom: 35px;
   button {
+    background-color: transparent;
     color: #fff;
-    background-color: ${({ theme }) => theme.mainColors.blue};
     margin: auto;
     padding: 10px 50px;
     font-size: 15px;
-    border: none;
+    border: 1px solid red;
     outline: none;
     border-radius: 12px;
     &:hover {
       cursor: pointer;
+      background-color: ${({ theme }) => theme.mainColors.blue};
     }
   }
 `;

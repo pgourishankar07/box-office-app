@@ -40,10 +40,11 @@ const ActionSection = styled.div`
   align-items: center;
   a {
     text-decoration-color: #000;
-    color: #000;
+    color: rgb(229, 9, 20);
     &:hover {
-      text-decoration-color: blue;
-      color: blue;
+      text-decoration-color: none;
+      color: #dfd3e3;
+      font-size: 19px;
     }
   }
 `;

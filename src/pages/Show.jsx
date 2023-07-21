@@ -67,10 +67,14 @@ const BackHomeWrapper = styled.div`
   text-align: left;
   a {
     padding: 10px;
-    color: ${({ theme }) => theme.mainColors.dark};
+    color: white;
     text-decoration: none;
+    border: 1px solid red;
+    border-radius: 12px;
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
+      cursor: pointer;
+      background-color: ${({ theme }) => theme.mainColors.blue};
     }
   }
 `;
@@ -91,5 +95,6 @@ const InfoBlock = styled.div`
     margin: 0;
     margin-bottom: 30px;
     font-size: 22px;
+    color: red;
   }
 `;

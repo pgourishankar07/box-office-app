@@ -15,14 +15,14 @@ function ShowLayout({ image, name, rating, genres, summary }) {
           </div>
         </Headline>
         <Summary dangerouslySetInnerHTML={{ __html: summary }} />
-        <>
+        <Gen>
           Genres :
           <Genres>
             {genres.map(i => {
               return <span key={i}> {i} </span>;
             })}
           </Genres>
-        </>
+        </Gen>
       </DataSection>
     </MainDataWrapper>
   );
@@ -82,8 +82,12 @@ const Headline = styled.div`
 `;
 
 const Summary = styled.div`
-  color: #5f5f5f;
+  color: #dbe9fa;
   line-height: 1.5;
+`;
+
+const Gen = styled.div`
+  color: #ffdead;
 `;
 
 const Genres = styled.div`
